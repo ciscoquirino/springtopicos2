@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import br.gov.sp.fatec.springtopicos2.entity.Usuario;
+import br.gov.sp.fatec.springtopicos2.entity.View;
 import br.gov.sp.fatec.springtopicos2.service.UsuarioService;
 
 @RestController
@@ -22,6 +25,7 @@ public class UsuarioContorller {
     @Autowired
     private UsuarioService service;
 
+    @JsonView(View.UsuarioView.class)
     @GetMapping
     public List<Usuario> todosUsuarios() {
         return service.todosUsuarios();
